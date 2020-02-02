@@ -30,17 +30,18 @@ public class BST<T extends Comparable<T>>
         BSTNode<T> node = find(data);
         if (node == null)
             addRoot(data);
-        else if (node.getData().compareTo(data) >= 0)
-            addLeft(node, data);
-        else if (node.getData().compareTo(data) < 0)
-            addRight(node, data);
         /*
         else if (node.getData().compareTo(data) >= 0)
             addLeft(node, data);
         else if (node.getData().compareTo(data) < 0)
             addRight(node, data);
-        else node.setData(data); // wersja 2: nie dodajemy elementów o tej samej wartości
         */
+        else if (node.getData().compareTo(data) >= 0)
+            addLeft(node, data);
+        else if (node.getData().compareTo(data) < 0)
+            addRight(node, data);
+        else node.setData(data); // wersja 2: nie dodajemy elementów o tej samej wartości
+
     }
 
     private void addLeft(BSTNode<T> parent, T data)
