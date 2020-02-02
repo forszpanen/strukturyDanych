@@ -28,19 +28,26 @@ public class BST<T extends Comparable<T>>
     public void add(T data) throws Exception
     {
         BSTNode<T> node = find(data);
-        if (node == null)
+        if (node == null) {
             addRoot(data);
+            return;}
         /*
         else if (node.getData().compareTo(data) >= 0)
             addLeft(node, data);
         else if (node.getData().compareTo(data) < 0)
             addRight(node, data);
         */
-        else if (node.getData().compareTo(data) >= 0)
+        if (node.getData().compareTo(data) > 0) {
             addLeft(node, data);
-        else if (node.getData().compareTo(data) < 0)
+            return;
+        }
+        if (node.getData().compareTo(data) < 0) {
             addRight(node, data);
-        else node.setData(data); // wersja 2: nie dodajemy elementów o tej samej wartości
+            return;
+        }
+        else
+         node.setData(data);
+         node.setCount(node.getCount() + 1);
 
     }
 
@@ -194,7 +201,8 @@ public class BST<T extends Comparable<T>>
     private void preOrder(BSTNode<T> node, List<T> list)
     {
         if(node == null) return;
-        list.add(node.getData());
+        for(int i = 0; i < node.getCount();i++)
+            list.add(node.getData());
 
         Iterator<BSTNode> children = node.children();
         while (children.hasNext())
@@ -219,7 +227,8 @@ public class BST<T extends Comparable<T>>
         {
             postOrder(children.next(), list);
         }
-        list.add(node.getData());
+        for(int i = 0; i < node.getCount(); i++)
+            list.add(node.getData());
     }
 
     /**
@@ -263,7 +272,8 @@ public class BST<T extends Comparable<T>>
     {
         if (node == null) return;
         inOrder(node.getLeft(), list);
-        list.add(node.getData());
+        for(int i = 0; i < node.getCount();i++)
+            list.add(node.getData());
         inOrder(node.getRight(), list);
     }
     @Override

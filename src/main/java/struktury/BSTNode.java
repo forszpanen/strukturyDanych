@@ -9,18 +9,28 @@ public class BSTNode<T> {
     private BSTNode<T> left;
     private BSTNode<T> right;
     private T data;
+    private int count;
 
         public BSTNode(T data)
         {
             this(null, null, null, data);
         }
 
-        public BSTNode(BSTNode<T> parent, BSTNode<T> leftChild, BSTNode<T> rightChild, T data)
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public BSTNode(BSTNode<T> parent, BSTNode<T> leftChild, BSTNode<T> rightChild, T data)
         {
             this.parent = parent;
             this.left = leftChild;
             this.right = rightChild;
             this.data = data;
+            this.count = 1;
         }
 
         public BSTNode <T> getParent()

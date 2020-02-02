@@ -47,6 +47,7 @@ public class BSTMain {
         catch(Exception ex) {
             System.out.println(ex.getMessage());
         }
+
         for(int i = 0; i < 1000_000; i++) {
             int x = (int)(Math.random()*2_500_000);
             try {
@@ -64,5 +65,6 @@ public class BSTMain {
         long gap = ChronoUnit.MILLIS.between(startT, endT);
         double time = (double)gap/1000;
         System.out.format("Time of searching = %.3f sec.%n", time);
+
     }
 }
